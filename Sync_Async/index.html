@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synchronous vs Asynchronous</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    #output {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-block;
+      text-align: left;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>Synchronous vs Asynchronous Execution</h2>
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function print(message) {
+      const p = document.createElement("p");
+      p.textContent = message;
+      output.appendChild(p);
+    }
+
+    print("🧩 Synchronous Example:");
+    print("Task 1");
+    print("Task 2");
+    print("Task 3 (executes immediately)");
+
+    print("");
+    print("⚡ Asynchronous Example:");
+
+    setTimeout(() => {
+      print("Message printed after 2 seconds!");
+    }, 2000);
+
+    let count = 1;
+    const intervalId = setInterval(() => {
+      print("Counter: " + count);
+      count++;
+      if (count > 5) {
+        clearInterval(intervalId);
+        print("Counter stopped.");
+      }
+    }, 1000);
+
+    print("This line runs immediately (before timeout and counter).");
+  </script>
+</body>
+</html>
